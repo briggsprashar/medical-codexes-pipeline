@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Medical Codex Pipeline
 
 This repository processes healthcare coding reference datasets (ICD-10, SNOMED, LOINC, etc.) into unified CSV format. 
@@ -43,7 +42,7 @@ medical-codex-pipeline/
 │ └── npi_processor.py
 ├── utils/
 │ └── common_functions.py # Reusable saving/logging utilities
-│ └── download_codexes.py # (bonus) Automated downloads tool ??
+│ └── download_codexes.py # (bonus) Automated downloads tool *not included*
 ├── requirements.txt
 ├── README.md
 └── .gitignore # Excludes large files, raw/input files, virtualenv, etc. for copyrighted and protected data.
