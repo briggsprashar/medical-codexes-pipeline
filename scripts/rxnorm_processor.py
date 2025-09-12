@@ -1,7 +1,12 @@
 # IMPORT necessary libraries
 import pandas as pd 
-import logging
-log = logging.getLogger(__name__)
+
+import gc as gc
+gc.collect() # force garbage collection to free up memory
+
+import logging 
+log = logging.getLogger(__name__) # logging setup
+
 from datetime import datetime
 
 # IMPORT shared function from utility folder to save to save transformed file to csv

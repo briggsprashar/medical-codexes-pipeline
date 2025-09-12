@@ -1,10 +1,14 @@
-# import pandas package
+# IMPORT necessary libraries
 import pandas as pd 
-import logging
-log = logging.getLogger(__name__)
+
+import gc as gc
+gc.collect() # force garbage collection to free up memory
+
+import logging 
+log = logging.getLogger(__name__) # logging setup
+
 from datetime import datetime
 
-# 
 filepath = 'input/LOINC/Loinc.csv'
 
 df = pd.read_csv(filepath)
@@ -13,7 +17,7 @@ df.to_csv('output/csv/loinc_test.csv')
 
 # read csv data from identified file into a pandas dataframe named loinc to query and 
 # process the data efficiently
-loinc = pd.read_csv(r'C:\Users\briggs\Downloads\SBU\Summer 2025\Fall 2025\HHA507\medical-codex-pipeline\input\loinc\Loinc.csv')
+loinc = pd.read_csv(r'..\input\loinc\Loinc.csv')
 
 # print column names, number of columns, data types, and how much memory the dataframe uses.
 # quick structure overview 

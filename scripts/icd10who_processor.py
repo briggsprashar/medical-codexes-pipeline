@@ -1,15 +1,20 @@
 # IMPORT necessary libraries
 import pandas as pd 
-import logging
-log = logging.getLogger(__name__)
+
+import gc as gc
+gc.collect() # force garbage collection to free up memory
+
+import logging 
+log = logging.getLogger(__name__) # logging setup
+
 from datetime import datetime
 
-# IMPORT shared function from utility folder to save to save transformed file to csv
+# IMPORT shared function from utility folder to save transformed file to csv
 from utils.common_functions import save_to_csv
 
 # LOAD icd-10 WHO dataset file with no headers
 # ASSIGN column names
-icd10who = pd.read_csv(r'C:\Users\briggs\Downloads\SBU\Summer 2025\Fall 2025\HHA507\medical-codex-pipeline\input\icd10WHO\icd102019syst_codes.txt', header=None, sep=';',
+icd10who = pd.read_csv(r'..\input\icd10WHO\icd102019syst_codes.txt', header=None, sep=';',
     names = ['Level', 'Type', 'Usage', 'Sort', 'Parent', 'Code', 'Display_code', 'Icd10_code', 
         'Title_en', 'Parent_title', 'Detailed_title', 'Definition', 'Mortality_code',
         'Morbidity_code1', 'Morbidity_code2', 'Morbidity_code3', 'Morbidity_code4',     

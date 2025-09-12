@@ -1,7 +1,12 @@
 # IMPORT necessary libraries
 import pandas as pd 
+
+import gc as gc
+gc.collect() # force garbage collection to free up memory
+
 import logging 
-log = logging.getLogger(__name__)
+log = logging.getLogger(__name__) # logging setup
+
 from datetime import datetime
 
 # IMPORT shared function from utility folder to save transformed file to csv
@@ -9,7 +14,7 @@ from utils.common_functions import save_to_csv
 
 # LOAD icd-10 US dataset file with no headers as a fwf file
 # ASSIGN meaningful column names  
-icd10us = pd.read_fwf(r'C:\Users\briggs\Downloads\SBU\Summer 2025\Fall 2025\HHA507\medical-codex-pipeline\input\icd10US\icd10cm_order_2025.txt', header=None, 
+icd10us = pd.read_fwf(r'..\input\icd10US\icd10cm_order_2025.txt', header=None, 
 names=['Number', 'Code', 'Level', 'Description1', 'Description2'])
 
 # DISPLAY basic structure and column info

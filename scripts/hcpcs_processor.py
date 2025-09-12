@@ -1,14 +1,19 @@
 # IMPORT necessary libraries
 import pandas as pd 
-import logging
-log = logging.getLogger(__name__)
+
+import gc as gc
+gc.collect() # force garbage collection to free up memory
+
+import logging 
+log = logging.getLogger(__name__) # logging setup
+
 from datetime import datetime
 
 # IMPORT shared function from utility folder to save transformed file to csv
 from utils.common_functions import save_to_csv
 
 # LOAD hcpc dataset file from input\hcpcs folder (file has column heads))
-hcpc_df = pd.read_excel (r'C:\Users\briggs\Downloads\SBU\Summer 2025\Fall 2025\HHA507\medical-codex-pipeline\input\hcpcs\HCPC2025_OCT_ANWEB_v3.xlsx') 
+hcpc_df = pd.read_excel (r'..\input\hcpcs\HCPC2025_OCT_ANWEB_v3.xlsx') 
 
 # DISPLAY basic structure and column info
 hcpc_df.info()
