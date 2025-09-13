@@ -10,7 +10,7 @@ log = logging.getLogger(__name__) # logging setup
 from datetime import datetime
 
 # IMPORT shared function from utility folder to save transformed file to csv
-from utils.common_functions import save_to_csv
+from scripts.common_functions import save_to_csv
 
 # LOAD icd-10 WHO dataset file with no headers
 # ASSIGN column names

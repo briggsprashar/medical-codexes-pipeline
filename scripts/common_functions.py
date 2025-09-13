@@ -1,23 +1,22 @@
 # deliver a utility function that saves either a Polars (fast df library) or Pandas (standard df library)
 # to a csv file in a specific directory 
 
-# import necessary libraries: polars, pandas and garbage collection
+# IMPORT necessary libraries: polars, pandas and garbage collection
 
 import pandas as pd
 import polars as pl
-import gc as gc 
 
-# trigger garbage collection to free up memory immediately
-gc.collect() 
-
-# import Path from the builtin pathlib module for file system paths in a clean objected oriented way.
+# IMPORT Path from the builtin pathlib module for file system paths in a clean objected oriented way.
 from pathlib import Path
 
-# create a directory path object pointing to the output/csv directory where all csv files will be saved 
-CSV_PATH = Path("output/csv")
+# GARBAGE COLLECTION to free up memory immediately
+import gc as gc 
+gc.collect() 
 
-# define a function "save_to_csv" that takes a dataframe (either Polars or Pandas) and a csv filename for output
+# CREATE a directory path object pointing to the output/csv directory where all csv files will be saved 
+CSV_PATH = Path(r'..\output\csv')
 
+# DEFINE a function "save_to_csv" that takes a dataframe (either Pandas OR Polars) and a defined csv filename for output
 def save_to_csv(df, filename):
     
     ###Save a DataFrame (Polars or pandas) to CSV in the output/csv directory###

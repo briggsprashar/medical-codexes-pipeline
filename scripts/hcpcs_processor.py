@@ -10,7 +10,7 @@ log = logging.getLogger(__name__) # logging setup
 from datetime import datetime
 
 # IMPORT shared function from utility folder to save transformed file to csv
-from utils.common_functions import save_to_csv
+from scripts.common_functions import save_to_csv
 
 # LOAD hcpc dataset file from input\hcpcs folder (file has column heads))
 hcpc_df = pd.read_excel (r'..\input\hcpcs\HCPC2025_OCT_ANWEB_v3.xlsx') 
@@ -39,8 +39,8 @@ shorthcpc = shorthcpc.rename(columns={'HCPC': 'Code', 'LONG DESCRIPTION': 'Descr
 
 # N/A: REMOVE empty descriptions/blanks/NaN values 
 
-# REMOVE duplicate codes if any
-# shorthcpc = shorthcpc.drop_duplicates(subset=['HCPC'])
+# N/A: REMOVE duplicate codes if any
+    # shorthcpc = shorthcpc.drop_duplicates(subset=['HCPC'])
 
 # SAVE this cleaned data subset as a CSV file using shared utility
 save_to_csv(shorthcpc, 'hcpc_short.csv')
