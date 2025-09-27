@@ -2,6 +2,9 @@ import pandas as pd
 import polars as pl
 from pathlib import Path
 
+from rich.console import Console
+console = Console()
+
 # define a function "save_to_csv" that takes a dataframe (either Polars or Pandas) and a csv filename for output\
 def save_to_csv(df, filename):
     output_dir = Path("output\\csv")
@@ -15,4 +18,4 @@ def save_to_csv(df, filename):
         df.to_csv(filepath, index=False) # if df is a pandas df,use the to_csv method to save it to the specified filepath.
     else:
         raise TypeError(f"Unsupported DataFrame type: {type(df)}") # if df is neither, raise a TypeError indicating unsupported df type.
-    print(f"Saved to {filepath}")
+    console.print("[bold green]Processed data with 3 columns extracted to[/bold green]", filepath)

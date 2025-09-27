@@ -4,12 +4,15 @@ import pyarrow as pa
 from datetime import datetime
 import sys
 
+from rich.console import Console
+console = Console()
+
 import os
 folder_path = "utils"
 if os.path.isdir(folder_path):
-    print("Folder exists and is recognized.")
+    console.print("\n[green]Utils Folder exists and is recognized.[/green]")
 else:
-    print("Folder not recognized or does not exist.")
+    console.print("\n[red]Utils Folder not recognized or does not exist.[/red]")
 
 # Adding the parent directory of the current file to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -17,11 +20,13 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.common_functions import save_to_csv
 
 # Define the file path
-npi_file_path = (r"input\npi\npidata.csv")
+npi_file_path = (r"input\\npi\\npidata.csv")
 
 df_polars = pl.read_csv(npi_file_path, n_rows=10000)
 
 print(set(df_polars.dtypes))
+
+
 rows, cols = df_polars.shape
 print("Number of rows:", rows)
 print("Number of columns:", cols)
@@ -43,9 +48,6 @@ _polars_small = polars_small.rename({
     'Provider Last Name (Legal Name)': 'Description',
     'last_updated': 'Last_updated'
 })
-
-
-
 
 # Convert Polars DataFrame to pandas DataFrame
 pandas_small = polars_small.to_pandas()
