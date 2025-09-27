@@ -1,0 +1,6 @@
+# Use latest versions (as of Sept 12, 2025) to avoid any compatability issues
+pandas
+polars
+requests
+openpyxl 
+pyarrow
