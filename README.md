@@ -10,16 +10,12 @@
 ## Objective
 From identified medical codexes (7 different medical codex types; collectively codexes), create a data pipeline using automated processes and tools that move raw data to local machines for ETL tasks, with the reproducible scripts available on a public Github repository for version control. The aim is to load the transformed data to be available for data wrangling. Proof of concept would be reproducibility from scripts and accompanying files loaded to Github, from where the repository can be cloned and the tasks reproduced. 
 
----
-
 ## Tech-stack
 - Python 3.13.7
 - Visual Code Studio (recommended editor)
 - Github (version control and code hosting)
- 
----
 
-## Codexes Supported
+## Codexes
 
 | Codex Name         | Purpose                                          |
 |--------------------|--------------------------------------------------|
@@ -31,7 +27,6 @@ From identified medical codexes (7 different medical codex types; collectively c
 | RxNorm (US)        | Medication vocabularies                          | 
 | NPI (US)           | Provider identifiers                             | 
 
-
 ## Data Sources
 - <a href="https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system/quarterly-update"> HCPCS (US) </a>
 - <a href="https://www.cms.gov/medicare/coding-billing/icd-10-codes"> ICD-10-CM (US) </a>
@@ -41,13 +36,22 @@ From identified medical codexes (7 different medical codex types; collectively c
 - <a href="https://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html"> RxNorm (US) </a>
 - <a href="https://www.nlm.nih.gov/healthit/snomedct/archive.html"> SNOMED (US) </a>
 
----
+## Features
+- Cleans and standardizes 7 codex datasets
+- Unified schema - "code, description, last updated"
+- Logs data quality issues
+- Beginner friendly
+
+## How to run
+1. Clone repository
+2. Install dependencies
+
 ## Workflow
 1. Setup
     - Create Github Repo 
     - Clone it to VSCode on local machine  
-    - Optimize VSCode with extensions
-        - Python, Gitlens, 
+    - Optimize VSCode
+
 2. VSCode folder structure 
 ```
 medical-codex-pipeline/
@@ -96,50 +100,21 @@ medical-codex-pipeline/
     - Alternatively, appropriately sized files (codex files are large; smaller files can be ignored from extracted data folders), can be opened with python script within VSCode and explored within VSCode.
     - Medical codex files such as those from UMLS Metathesaurus or RxNorm, are in Rich Release Format (RRF). These files are pipe-delimited text files, typically very large, and intended to be loaded into a relational database system for processing rather than directly opened in simple text editors due to size. For this project the contents of the sole RRF file were visible only as an output file or in terminal as a preview '.head()'.
     - This project does not include reading relevant data from a PDF or similar file type,
-#### Project data outputs
-    - Raw data downloads using compliant methods and protocols.
-    - Raw data file to be ingested via VSCode with output in .CSV file type.
-    - 2 columns extracted from each processed codex data file (some sort of unique identifier and a descriptor e.g., 'Code', 'Description', or 'Last_Name'), where necessary renamed.  
-    - 1 column needs to be added to the output file with the date of last update (e.g.,'Last_updated')
-    - Dependencies and configuration setting for Github repository via VSCode configurations reflected in Requirements.txt
-    - Explore file ingestion of files of different sises using Pandas and Polars.
-    - Code validation via running code snippets in the terminal and previewing output files. 
-    - Generating a .csv for each raw data file using pandas, polars or parquet.
-    - Documentation and logging embedded in the code and via README.md and the code.
-    - Reproducibility via Github repository
 
-### 1. HCPCS medical codex data-pipeline
+### Data-pipeline development
 
-#### Create environment
-import pandas and openpyxl, `from datetime import datetime`
+PANDAS
+- Create local storage and VSCode folder structure and load files
+- Explore data in the 1st raw .csv file extracts
+- Generate relevant data in the terminal 
+- Extract 2nd .csv files with relevant columns, rename, add a 3rd column
+- Used Rich (a Python library) to better present the raw and extracted files in the terminal
+- Truncate the final output into 3rd .csv files with fixed-width-columns
 
-#### Prepare and explore file
-define filepath  > create data frame to read file from defined file path > `df.info()` > `print(df.head())` > explore raw file for raw data structure `df.to.csv("filepath")`> further explore tab-separated by adding `sep'\t'`, `index=False`, `header=True` > identify 2 columns > put the 2 columns in dfs: df['column1'], df['column2']
+POLARS  
+- Code, data exploration and extraction are different.
 
-#### Extract relevant columns, rename, add a 3rd column
-extract these 2 copy them in a separate short_df `short_df = df[['column1', 'column2']].copy()` > rename the 2 columns in this short_df `short_df = short_df.rename(columns={'column1':Code, 'column2': Description'})` > add a 3rd column ``short_df[column3] = datetime.today().strftime('%Y-%m-%d')` 
-
-#### Extract output
-`short_df.to_csv("output_file_path.csv", sep'\t', index=False, header=True)`
-
-### 2. ICD-10-CM (US) Medical codex data-pipeline
-#### 
-
-### 3. ICD-10 (WHO) medical codex data-pipeline
-#### 
-
-### 4. LOINC medical codex data-pipeline
-#### 
-
-### 5. NPI medical codex data-pipeline
-#### 
-
-### 6. RxNorm medical codex data-pipeline
-#### 
-
-### 7. SNOMED codex data-pipeline
-#### 
-
+#### > Extract output
 ## Push to Github
 Files/folders from cloned repository in VSCode to be pushed to Github 
 ```
@@ -158,31 +133,28 @@ medical-codex-pipeline/
 ├── README.md
 └── .gitignore
 ```
-
-## Features
-- Cleans and standardizes 7 codex datasets
-- Unified schema - "code, description, last updated"
-- Logs data quality issues
-- Beginner friendly
-
-## How to run
-1. Clone repository
-2. Install dependencies
-
-## pip install -r requirements.txt
-3. Place sample raw data in `/input/`
-4. Run processing script: ?? python scripts/icd10cm_processor.py ??
-
 ## Output
-Processed .csv files arr rendered as in three forms 
-- raw data .csv file
-- extracted .csv file with 3 targeted columns
-- fixed-width column-aligned .csv
+#### Project data outputs
+    - Raw data downloads using compliant methods and protocols.
+    - Raw data file to be ingested via VSCode with output in .CSV file type.
+    - 2 columns extracted from each processed codex data file (some sort of unique identifier and a descriptor e.g., 'Code', 'Description', or 'Last_Name'), where necessary renamed.  
+    - 1 column needs to be added to the output file with the date of last update (e.g.,'Last_updated')
+    - Dependencies and configuration setting for Github repository via VSCode configurations reflected in Requirements.txt
+    - Explore file ingestion of files of different sises using Pandas and Polars.
+    - Code validation via running code snippets in the terminal and previewing output files. 
+    - Generating a .csv for each raw data file using pandas, polars or parquet.
+    - Documentation and logging embedded in the code and via README.md and the code.
+    - Reproducibility via Github repository
+
+#### Processed .csv files
+- Raw data .csv file
+- Extracted .csv file with 3 targeted columns
+- Fixed-width column-aligned .csv
 
 ## Validate reproducibility
 After the final push to Github repository, clone the code in a new local VSCode folder, and reproduce the results for validation and to test reproducibility, and identify bugs and issues in reproducibility noted in an issue log. In case of issues try and identify if the issues are because of environment/dependencies or script, and resolve. 
 
-Remember there are many ways to Dublin!
+Remember, there are many ways to Dublin!
 
 ## Clean up local machine
 Finally, after validating the cloned files and testing reproducibility (identifying issues in an issue log for further improvement), archive the project folder on your machine, noting the raw data file download process so it can be repeated. The raw data files can be deleted from the local machine.
