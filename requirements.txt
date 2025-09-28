@@ -4,3 +4,4 @@ polars
 requests
 openpyxl 
 pyarrow
+rich
