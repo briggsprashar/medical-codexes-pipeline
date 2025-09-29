@@ -23,7 +23,7 @@ The aim is to load the transformed data to be available for data wrangling. Proo
 
 <br />
 
-<details>
+<details open>
   <summary>Features</summary>  
 <br />
 
@@ -34,7 +34,7 @@ The aim is to load the transformed data to be available for data wrangling. Proo
 </details>
 <br />
 
-<details>
+<details open>
   <summary>How to run</summary>  
 <br />
 
@@ -45,8 +45,8 @@ The aim is to load the transformed data to be available for data wrangling. Proo
 
 ## 1. Input
 
-<details>
-  <summary>Tech Stack</summary>  
+<details open>
+  <summary>Tech-Stack</summary>  
 <br />
 
 - Python 3.13.7
@@ -101,7 +101,7 @@ The aim is to load the transformed data to be available for data wrangling. Proo
 </details>
 
 <br />
-<details>
+<details open>
   <summary>VSCode environment</summary>  
     
     - Pandas
@@ -180,15 +180,16 @@ medical-codex-pipeline/
 - Code, data exploration and extraction steps are mostly the same as for Pandas but the code methods and syntax are different in some cases.
 </details>
 <br />
-<details>
+<details open>
   <summary>Output extraction</summary>
+<br />
 
 - Raw data .csv file to explore
 - Extracted .csv file with 3 targeted columns
 - Fixed-width column-aligned .csv
 </details>
 <br />
-<details>
+<details open>
   <summary>Push to Github</summary>
 
 ```
@@ -230,16 +231,16 @@ medical-codex-pipeline/
 - README.md created to aide reproducibility.
 </details>
 <br />
-<details>
+<details open>
   <summary>Limitations</summary>
-
+<br />
 - Documentation of steps not robust
 - Logging module embedded in the code was hashed out and needs to be redone
 </details>
 <br />
 <details>
   <summary>Validate reproducibility</summary>
-
+<br />
 - After the final push to Github repository, clone the code in a new local VSCode folder, and reproduce the results for validation and to test reproducibility, and identify bugs and issues in reproducibility noted in an issue log. 
 - In case of issues try and identify if the issues are because of environment/dependencies or script, and resolve. 
 **<h3>Remember, there are many ways to get to Dublin!</h3>**
@@ -247,7 +248,7 @@ medical-codex-pipeline/
 <br />
 <details>
   <summary>Clean up local machine</summary>
-
+<br />
   Finally, after validating the cloned files and testing reproducibility (identifying issues in an issue log for further improvement), archive the project folder on your machine, noting the raw data file download process so it can be repeated. The raw data files can be deleted from the local machine. 
   
   - Record key learning in whichever way you deem fit. The important thing is to learn and understand the concepts and process. 
@@ -255,8 +256,9 @@ medical-codex-pipeline/
   - Move on to the next project, but after understanding the concepts not just hacking out output files through vibe coding. 
 </details>
 <br />
-<details>
+<details open>
   <summary>Learnings and insights</summary>
+<br />
 
 - The complexity level of the sample starter codes was incremental in difficulty, exploring different types of data processing techniques with each sample code. 
 - Sample codes exposed different techniques, and as a result, tools and dependencies, to process data and create data pipelines using basic Python code, VSCode dependencies, environment creation, and Github integration.
