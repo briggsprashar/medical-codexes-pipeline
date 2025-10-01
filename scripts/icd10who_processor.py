@@ -26,7 +26,7 @@ icd10who = pd.read_csv(r'input\icd10WHO\icd102019syst_codes.txt', header=None, s
         'Morbidity_code1', 'Morbidity_code2', 'Morbidity_code3', 'Morbidity_code4',     
         ])
 
-icd10who.to_csv('output\csv\icd10who_raw.csv', sep=',', index=False, header=True) # to explore raw file data
+icd10who.to_csv('output/csv/icd10who_raw.csv', sep=',', index=False, header=True) # to explore raw file data
 
 rows, cols = icd10who.shape
 console.print("\nRows", rows)

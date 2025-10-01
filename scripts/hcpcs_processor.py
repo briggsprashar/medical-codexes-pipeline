@@ -9,15 +9,14 @@ console = Console()
 
 import os 
 
-# candidate code-block for common functions script?
 folder_path = r"utils" 
 if os.path.isdir(folder_path):
     console.print("\n[green]Utils folder exists and is recognized.[green]")
 else:
     console.print("\n[red]Utils Folder not recognized or does not exist.[/red]")
 
-# candidate code-block for common functions script?
-    # Add the parent directory of the current file to the system path
+
+# Add the parent directory of the current file to the system path
     # This code takes care of terminal error that utils is not a module
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -25,9 +24,9 @@ from utils.common_functions import save_to_csv
 
 hcpc_df = pd.read_excel ('input\\hcpcs\\HCPC2025_OCT_ANWEB_v3.xlsx') 
 
-hcpc_df.to_csv('output\csv\hcpc_raw.csv', sep=',', index=False, header=True) # to explore raw file data
+hcpc_df.to_csv('output/csv/hcpc_raw.csv', sep=',', index=False, header=True) # to explore raw file data
 
-# candidate code-block for common functions script?
+# DONE candidate code-block for common functions script?
 rows, cols = hcpc_df.shape
 console.print("\nRows", rows)
 console.print("Columns", cols)
@@ -43,14 +42,12 @@ hcpc_df['HCPC']
 hcpc_df['LONG DESCRIPTION']
 hcpc_df['SHORT DESCRIPTION']
 
-# candidate code-block for common functions script?
-    # CREATE a trimmed DataFrame with selected columns and assign it to a new VARIABLE
+# CREATE a trimmed DataFrame with selected columns and assign it to a new VARIABLE
         # use of double square brackets to select multiple columns
         # use of copy() to create a copy of the selected columns
 shorthcpc = hcpc_df[['HCPC', 'LONG DESCRIPTION']].copy()
 
-# this can be added to common functions script
-    # ADD a timestamp column
+# ADD a timestamp column
 shorthcpc['Last_updated'] = datetime.today().strftime('%m-%d-%Y')
 
 # RENAME columns for clarity and consistency
@@ -65,10 +62,9 @@ shorthcpc = shorthcpc.map(lambda x: str(x)[:27] + "..." if len(str(x)) > 50 else
 with open("output\\csv\\hcpc_aligned.csv", "w") as f:
     f.write(shorthcpc.to_string(index=False))
 
+# DONE candidate code-block for common functions script?
 console.print("\n[bold green]Extracted File Preview[/bold green]\n")
 print(shorthcpc.head())
-
-# candidate code-block for common functions script?
 console.print("\n[bold green]Summary[/bold green]\n")    
 console.print("[green]>>> Raw file was explored. Column headers were identified and extracted.[/green]")
 console.print("[green]>>> HCPC column was renamed Code.[/green]")

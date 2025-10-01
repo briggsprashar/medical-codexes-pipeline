@@ -56,5 +56,5 @@ save_to_csv(pandas_small, "npi_short.csv")
 
 # truncating columns
 pandas_small = pandas_small.applymap(lambda x: str(x)[:27] + "..." if len(str(x)) > 50 else str(x))
-with open("output\\csv\\npi_aligned.csv", "w") as f:
+with open("output/csv/npi_aligned.csv", "w") as f:
     f.write(pandas_small.to_string())
