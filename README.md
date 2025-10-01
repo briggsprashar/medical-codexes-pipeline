@@ -28,20 +28,26 @@ The aim is to load the transformed data to be available for data wrangling. Proo
 <br />
 
 - Cleans and standardizes 7 codex datasets
-- Uses a unified schema - "Code, Description, Last updated"
-- Logs data quality issues
+- All 7 codes were consolidated to use as a template for all 7 codex scripts.
+- All scripts use the same script (some variations exist e.g., pandas vs polars) and terminal output template.
+- Common utility functions used to make code efficient; other candidate common functions identified to improve the code.
+- Uses a unified schema - "Code, Description, Last updated" to extract output
+  - This repo outputs csv files that are not aligned with fixed column widths.
+  - Codex 4 repo uses code to extract aligned fixed width column output CSV files.
+- Attempt was made to include Logging module to log code execution and data quality issues: will do so in future. 
+- A script to identify utils folder was added to start of every script; then utils folder was called.
+- Summary info in the terminal output
 - Beginner friendly
-</details>
 <br />
+</details>
 
-<details open>
+<details>
   <summary>How to run</summary>  
 <br />
 
 - Clone repository
 - Install dependencies
 </details>
-<br />
 
 ## 1. Input
 
@@ -101,7 +107,7 @@ The aim is to load the transformed data to be available for data wrangling. Proo
 </details>
 
 <br />
-<details open>
+<details>
   <summary>VSCode environment</summary>  
     
     - Pandas
@@ -180,7 +186,7 @@ medical-codex-pipeline/
 - Code, data exploration and extraction steps are mostly the same as for Pandas but the code methods and syntax are different in some cases.
 </details>
 <br />
-<details open>
+<details>
   <summary>Output extraction</summary>
 <br />
 
@@ -189,7 +195,7 @@ medical-codex-pipeline/
 - Fixed-width column-aligned .csv
 </details>
 <br />
-<details open>
+<details>
   <summary>Push to Github</summary>
 
 ```
@@ -231,7 +237,7 @@ medical-codex-pipeline/
 - README.md created to aide reproducibility.
 </details>
 <br />
-<details open>
+<details>
   <summary>Limitations</summary>
 <br />
 - Documentation of steps not robust
@@ -256,7 +262,7 @@ medical-codex-pipeline/
   - Move on to the next project, but after understanding the concepts not just hacking out output files through vibe coding. 
 </details>
 <br />
-<details open>
+<details>
   <summary>Learnings and insights</summary>
 <br />
 
@@ -266,6 +272,7 @@ medical-codex-pipeline/
 - LLM use gave exposure to the sheer expanse of coding in data analytics.
 - Various dependencies: Inbuilt Python modules, Python libraries and 3rd party modules. (Tabular, Datetime, Path, Wheel, Openpyxl, Fastparquet, Pyarrow.)
 - Python code workflow using VSCode integrating to Github.
+- Visualizations with python libraries and descriptive stats and analysis needs to be incorporated.
 </details>
 
 
