@@ -1,7 +1,7 @@
 import pandas as pd
 import polars as pl
 from pathlib import Path
-
+import gc
 from rich.console import Console
 console = Console()
 
@@ -19,3 +19,5 @@ def save_to_csv(df, filename):
     else:
         raise TypeError(f"Unsupported DataFrame type: {type(df)}") # if df is neither, raise a TypeError indicating unsupported df type.
     console.print("[bold green]Processed data with 3 columns extracted to[/bold green]", filepath)
+    
+    gc.collect()

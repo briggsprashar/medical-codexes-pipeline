@@ -3,6 +3,7 @@ import pandas as pd
 import pyarrow as pa
 from datetime import datetime
 import sys
+import gc
 
 from rich.console import Console
 console = Console()
@@ -25,7 +26,6 @@ npi_file_path = (r"input\\npi\\npidata.csv")
 df_polars = pl.read_csv(npi_file_path, n_rows=10000)
 
 print(set(df_polars.dtypes))
-
 
 rows, cols = df_polars.shape
 print("Number of rows:", rows)
@@ -58,3 +58,12 @@ save_to_csv(pandas_small, "npi_short.csv")
 pandas_small = pandas_small.applymap(lambda x: str(x)[:27] + "..." if len(str(x)) > 50 else str(x))
 with open("output/csv/npi_aligned.csv", "w") as f:
     f.write(pandas_small.to_string())
+    
+df_polars = None
+del df_polars   
+polars_small = None
+del polars_small    
+    
+gc.collect()
+
+console.print("\n[bold white]Memory cleared. Processing complete.[/bold white]\n")

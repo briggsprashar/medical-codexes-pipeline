@@ -3,6 +3,7 @@ import pandas as pd
 # log = logging.getLogger(__name__)
 from datetime import datetime
 import sys
+import gc
 
 from rich.console import Console
 console = Console()
@@ -74,6 +75,10 @@ console.print("[green]>>> Output file with 3 columns - Code, Description and Las
 save_to_csv(shorthcpc, 'hcpc_short.csv')
 console.print("[green]>>> Final fixed-column-width .csv file was generated and saved in the output folder.[/green]\n")
 
+hcpc_df = None
+del hcpc_df
+shorthcpc = None
+del shorthcpc
 
-
-
+gc.collect()
+console.print("\n[bold white]Memory cleared. Processing complete.[/bold white]\n")

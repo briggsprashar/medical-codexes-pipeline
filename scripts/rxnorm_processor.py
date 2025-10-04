@@ -3,6 +3,7 @@ import pandas as pd
 # log = logging.getLogger(__name__)
 from datetime import datetime
 import sys
+import gc
 
 from rich.console import Console
 console = Console()
@@ -86,4 +87,11 @@ console.print("[green]>>> Last Updated column was added.[/green]")
 console.print("[green]>>> Output file with 3 columns - Code, Description and Last_updated - was generated.[/green]")
 save_to_csv(rxnorm_short, 'rxnorm_short.csv') 
 console.print("[green]>>> Final fixed-column-width .csv file was generated and saved in the output folder.[/green]\n")
-    
+
+rxnorm = None
+del rxnorm
+rxnorm_short = None
+del rxnorm_short
+
+gc.collect()
+console.print("\n[bold white]Memory cleared. Processing complete.[/bold white]\n")
